@@ -1,0 +1,1033 @@
+/* ==================== GOOGLE FONTS ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ==================== VARIABLES ==================== */
+:root {
+    --space-indigo: #1a1b2e;
+    --space-indigo-light: #2b2d42;
+    --lavender-grey: #8d99ae;
+    --platinum: #edf2f4;
+    --punch-red: #ef233c;
+    --flag-red: #d90429;
+    --white: #ffffff;
+    --accent: #c9a96e;
+    --accent-light: #e8d5b0;
+    --card-bg: rgba(255, 255, 255, 0.97);
+    --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+    --radius: 4px;
+    --radius-lg: 12px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ==================== RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--space-indigo);
+    color: var(--space-indigo);
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    width: 100%;
+    background: var(--space-indigo);
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+section h2 {
+    font-size: 2.4em;
+    margin-bottom: 0.6em;
+    color: var(--space-indigo);
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin-top: 8px;
+}
+
+/* ==================== GLOBAL IMG HOVER ==================== */
+img {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* ==================== NAV ==================== */
+.nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 70px;
+    padding: 0 2em;
+    background-color: var(--space-indigo);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5em;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+nav h1 {
+    text-align: center;
+    flex: 1;
+    color: var(--platinum);
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+nav h1 a {
+    text-decoration: none;
+    color: var(--platinum);
+    transition: color 0.3s ease;
+}
+
+nav h1 a:hover {
+    color: var(--accent);
+}
+
+nav ul a {
+    text-decoration: none;
+    padding: 0.4em 0;
+    font-size: 0.9em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lavender-grey);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav ul a:hover {
+    color: var(--accent);
+}
+
+nav ul a:hover::after {
+    width: 100%;
+}
+
+.nav__left {
+    display: none;
+}
+
+.nav__right {
+    display: none;
+    justify-content: flex-end;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2em;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--platinum);
+    transition: color 0.3s ease;
+}
+
+.hamburger:hover {
+    color: var(--accent);
+}
+
+/* ==================== TOP CAROUSEL ==================== */
+.top-carousel {
+    height: 580px;
+    overflow: hidden;
+    position: relative;
+}
+
+.top-carousel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--space-indigo));
+    pointer-events: none;
+    z-index: 2;
+}
+
+.top-carousel:focus-within,
+.carousel:focus-within,
+.card:focus,
+.card img:focus,
+.card p:focus {
+    outline: none !important;
+}
+
+.carousel {
+    width: 100%;
+    overflow-x: auto;
+    margin: 0;
+    display: flex;
+    height: 100%;
+    anchor-name: --carousel;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scroll-padding: 0;
+    scroll-marker-group: after;
+}
+
+.carousel, .f-carousel {
+    scroll-behavior: smooth !important;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.6em;
+    margin-top: -2.5em;
+    z-index: 10;
+}
+
+.card {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75);
+}
+
+.card p {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background: linear-gradient(105deg, rgba(26,27,46,0.85) 35%, transparent 75%);
+    padding: 0 5em;
+    max-width: 80%;
+    font-size: 2.6em;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.3;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    letter-spacing: -0.01em;
+}
+
+.card::scroll-marker {
+    content: '';
+    height: 6px;
+    width: 6px;
+    background-color: rgba(255,255,255,0.35);
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.card::scroll-marker:target-current {
+    background-color: var(--accent);
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* ==================== SECTIONS ==================== */
+section {
+    width: 88%;
+    margin: 48px auto;
+    justify-content: center;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 40px 48px;
+    box-shadow: var(--shadow-md);
+    border-top: 3px solid var(--accent);
+    transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==================== ABOUT ==================== */
+.about p {
+    font-size: 1.1em;
+    line-height: 1.85;
+    color: #444;
+    max-width: 780px;
+}
+
+.about p + p {
+    margin-top: 1em;
+}
+
+/* ==================== STORY / FAMILY CAROUSEL ==================== */
+.f-main {
+    flex: 3 1 300px;
+    background-color: var(--space-indigo-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-md);
+}
+
+.f-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(201, 169, 110, 0.9);
+    color: var(--space-indigo);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1em;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.f-btn:hover {
+    background: var(--accent);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.f-btn--left { left: 14px; }
+.f-btn--right { right: 14px; }
+
+.f-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.f-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.f-card {
+    flex-shrink: 0;
+    width: 100%;
+    scroll-snap-align: center;
+}
+
+.f-card img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+}
+
+.f-caption {
+    padding: 1em 1.5em;
+    font-size: 0.95em;
+    color: var(--lavender-grey);
+    text-align: center;
+    font-style: italic;
+    background: var(--space-indigo-light);
+}
+
+/* ==================== PROJECTS ==================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5em;
+}
+
+.project-card {
+    background: var(--white);
+    border-left: 3px solid var(--accent);
+    padding: 1.8em;
+    border-radius: var(--radius-lg);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4em;
+    color: var(--space-indigo);
+}
+
+.project-content {
+    display: none;
+    margin-top: 1.2em;
+}
+
+.project-card.expanded .project-content {
+    display: block;
+}
+
+.project-card.expanded {
+    grid-column: 1 / -1;
+    max-width: 820px;
+    margin: 0 auto;
+    transform: scale(1);
+    box-shadow: var(--shadow-lg);
+    min-height: 500px;
+}
+
+.project-card.expanded .project-description {
+    margin-bottom: 1.5em;
+}
+
+.project-description {
+    margin-top: 1em;
+    color: #555;
+    line-height: 1.75;
+    font-size: 0.95em;
+}
+
+.project-card:not(.expanded) .project-description {
+    display: none;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 1.2em;
+    right: 1.2em;
+    background: var(--space-indigo);
+    color: var(--platinum);
+    border: none;
+    padding: 0.4em 1.2em;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.project-card.expanded .toggle-btn {
+    display: block;
+}
+
+.toggle-btn:hover {
+    background: var(--accent);
+    color: var(--space-indigo);
+}
+
+/* ==================== HOBBIES SECTION ==================== */
+.hobbies {
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 2.5em;
+    font-style: italic;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8em;
+    margin-top: 1em;
+}
+
+.hobby-card {
+    background: var(--white);
+    padding: 2.2em 1.8em;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: var(--shadow-sm);
+    border-top: 3px solid transparent;
+}
+
+.hobby-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), rgba(201,169,110,0.6));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.hobby-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-top-color: var(--accent);
+}
+
+.hobby-card:hover::before {
+    transform: scaleX(1);
+}
+
+.hobby-icon {
+    font-size: 3.2em;
+    margin-bottom: 1em;
+    display: block;
+    line-height: 1;
+}
+
+.hobby-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+    color: var(--space-indigo);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.01em;
+}
+
+.hobby-card p {
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 1.5em;
+    font-size: 0.95em;
+}
+
+.hobby-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.tag {
+    background: rgba(201, 169, 110, 0.1);
+    color: var(--accent);
+    padding: 0.3em 0.8em;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hobby-card:hover .tag {
+    background: var(--accent);
+    color: var(--space-indigo);
+    border-color: var(--accent);
+}
+
+
+/* ==================== PROJECT GALLERY ==================== */
+.project-image-gallery {
+    width: 100%;
+    margin-top: 1.5em;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--space-indigo);
+    position: relative;
+}
+
+.gallery-carousel {
+    display: flex;
+    width: 100%;
+    height: 360px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--space-indigo);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.02);
+}
+
+.gallery-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9em 1.2em;
+    background: rgba(26, 27, 46, 0.95);
+}
+
+.gallery-btn {
+    background: rgba(201, 169, 110, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-btn:hover {
+    background: var(--accent);
+    color: var(--space-indigo);
+    border-color: var(--accent);
+    transform: scale(1.08);
+}
+
+.gallery-btn:active {
+    transform: scale(0.95);
+}
+
+.gallery-indicators {
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    padding: 0.8em;
+    background: rgba(26, 27, 46, 0.9);
+}
+
+.gallery-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(201, 169, 110, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-dot.active {
+    background: var(--accent);
+    transform: scale(1.3);
+}
+
+/* ==================== ART GRID ==================== */
+.art {
+    text-align: left;
+}
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8em;
+    margin-top: 1.5em;
+}
+
+.art-card {
+    overflow: hidden;
+    border-radius: var(--radius);
+    position: relative;
+    aspect-ratio: 3/4;
+    background: var(--space-indigo-light);
+}
+
+.art-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.art-card:hover img {
+    transform: scale(1.08);
+}
+
+/* ==================== IMAGE ZOOM MODAL ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 20, 0.96);
+}
+
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: var(--radius);
+    box-shadow: 0 0 80px rgba(0,0,0,0.5);
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: var(--accent);
+    font-size: 36px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    line-height: 1;
+}
+
+.close:hover {
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    position: relative;
+    padding: 1.5em 2em;
+    margin: 0;
+    background-color: var(--space-indigo);
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--platinum);
+    gap: 3em;
+}
+
+.footer-left {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-left h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0 0 0.2em 0;
+    color: var(--platinum);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.03em;
+}
+
+.footer-left p {
+    font-size: 0.85em;
+    opacity: 0.5;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+.social-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    align-items: center;
+    min-width: fit-content;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.55em 1em;
+    border-radius: 40px;
+    text-decoration: none;
+    color: var(--lavender-grey);
+    font-weight: 400;
+    font-size: 0.85em;
+    border: 1px solid rgba(141,153,174,0.2);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.social-link:hover {
+    background: var(--accent);
+    color: var(--space-indigo);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 169, 110, 0.25);
+}
+
+.social-link i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover i {
+    transform: scale(1.15);
+}
+
+.social-link span {
+    font-size: 0.85em;
+}
+
+.social-icon {
+    display: none;
+}
+
+.project-card:hover,
+.p-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* ==================== RESPONSIVENESS ==================== */
+@media (min-width: 769px) {
+    .nav__left,
+    .nav__right {
+        display: flex;
+    }
+    .card p {
+        height: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    nav h1 {
+        font-size: 1.3em;
+    }
+    .top-carousel {
+        height: 420px;
+    }
+    .card p {
+        font-size: 2em;
+    }
+    section {
+        width: 92%;
+        padding: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        height: auto;
+        padding: 0.8em 1em;
+    }
+    nav {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        padding: 0.8em 1em;
+    }
+    nav h1 {
+        font-size: 1em;
+        order: -1;
+        flex: 1;
+        white-space: nowrap;
+    }
+    nav ul {
+        display: none;
+        grid-column: 1 / -1;
+    }
+    nav ul.open {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 9vh;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+        grid-column: 1 / -1;
+        background: rgba(26,27,46,0.98);
+        border-top: 1px solid rgba(201, 169, 110, 0.1);
+        padding: 0.5em 0;
+    }
+    .hamburger {
+        display: block;
+        order: 0;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-links ul {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+    .top-carousel {
+        height: 320px;
+    }
+    .card p {
+        font-size: 1.4em;
+        max-width: 85%;
+        height: 100%;
+        padding: 0 2em;
+    }
+    section {
+        width: 95%;
+        padding: 24px 20px;
+        margin: 28px auto;
+    }
+    .footer {
+        padding: 2em 1em;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5em;
+        text-align: center;
+    }
+    .footer-left {
+        text-align: center;
+    }
+    .social-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5em;
+    }
+    .social-link {
+        flex: 1 1 130px;
+        min-width: 120px;
+        justify-content: center;
+    }
+    .gallery-carousel {
+        height: 280px;
+    }
+    .gallery-nav {
+        padding: 0.8em;
+    }
+    .gallery-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9em;
+    }
+    .project-card.expanded {
+        grid-column: unset;
+        max-width: 100%;
+        margin: 0.5em 0;
+    }
+    .f-card img {
+        height: 300px;
+    }
+    .art-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+     .hobby-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+    }
+    
+    .hobby-card {
+        padding: 1.8em 1.4em;
+    }
+    
+    .hobby-icon {
+        font-size: 2.8em;
+    }
+    
+    .section-subtitle {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        padding: 1em 0.5em;
+        gap: 1em;
+    }
+    .footer-left h2 {
+        font-size: 1.2em;
+    }
+    .social-grid {
+        max-width: 280px;
+        gap: 0.6em;
+    }
+    .social-link {
+        padding: 0.6em 0.8em;
+        font-size: 0.82em;
+    }
+
+     .hobby-card {
+        padding: 1.6em 1.2em;
+    }
+    
+    .hobby-icon {
+        font-size: 2.5em;
+        margin-bottom: 0.8em;
+    }
+}
